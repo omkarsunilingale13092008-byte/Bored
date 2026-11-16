@@ -12,22 +12,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - uses: actions/setup-java@v4
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      - name: Build APK
-        run: echo "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" | base64 -d | gunzip | bash
-      - uses: actions/upload-artifact@v4
+
+      - name: Setup Android
+        uses: android-actions/setup-android@v3
+
+      - name: Clone Painted Valley and Build
+        run: |
+          git clone https://github.com/blendi/painted-valley.git game
+          cd game
+          npm install
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npx cap init PaintedValley com.paintedvalley.app --web-dir=dist || true
+          npx cap add android || true
+          
+          # Make left joystick transparent
+          find src -type f -name "*.js" -o -name "*.ts" -o -name "*.css" | xargs sed -i 's/opacity: *1/opacity: 0.3/g' || true
+          find src -type f -name "*.js" -o -name "*.ts" | xargs sed -i 's/left.*joystick/transparent/g' || true
+          
+          echo "Building..."
+          npm run build || npx vite build || true
+          npx cap copy android || true
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk ../../Painted-Valley-MotoG45.apk
+          cd ../..
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: Painted-Valley-MotoG45-APK
           path: Painted-Valley-MotoG45.apk
-      - uses: softprops/action-gh-release@v2
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
-          name: Painted Valley APK Build ${{ github.run_number }}
           files: Painted-Valley-MotoG45.apk
-          
